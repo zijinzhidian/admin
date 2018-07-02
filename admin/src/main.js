@@ -26,6 +26,8 @@ import i18n from './lang'
 // icon
 import './icons'
 
+import './test'
+
 Vue.config.productionTip = false
 
 // 全局配置Element
@@ -33,6 +35,10 @@ Vue.use(ElementUI, {
 	size: 'medium',     //设置组件默认尺寸
 	i18n: (key, value) => i18n.t(key, value)   //设置语言转化
 })
+
+// Vue.component('todo-item', {
+// 	template: '<li>item</li>'
+// })
 
 /* eslint-disable no-new */
 new Vue({
@@ -42,3 +48,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+

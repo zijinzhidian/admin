@@ -7,7 +7,7 @@
 			</div>
 			<el-form-item prop="username">
 				<span class="svg-container svg-container_login">
-					<svg-icon icon-class="user"></svg-icon>
+					<!-- <svg-icon icon-class="user"></svg-icon> -->
 				</span>
     		<!-- <el-input></el-input> -->
   		</el-form-item>
