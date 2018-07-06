@@ -1,15 +1,34 @@
 /*
-安装vue-i18n
-npm install vue-i18n --save
+安装vue-i18n(国际化标准语言)
+	npm install vue-i18n --save
 */
 
-/* 安装scss依赖
+/*
+安装vuex
+	npm install vuex --save
+*/
+
+/* 
+安装scss依赖
 	npm install node-sass --sava-dev
 	npm install sass-loader --save-dev
 */
 
-/* 安装cross-env(用于配置项目多环境)
+/* 
+安装cross-env(用于配置项目多环境)
 	npm install cross-env --save-dev
+*/
+
+/*
+1.安装svg-sprite-loader(用于处理svg图标,将多个svg打包成svg-sprite)
+	npm install svg-sprite-loader --sava-dev
+
+2.具体的配置在webpack.base.conf.js文件
+*/
+
+/*
+安装js-cookie(用于操作cookie)
+	npm install js-cookie --save
 */
 
 import Vue from 'vue'        	//完整写法:import Vue from '../node_modules/vue/dist/vue.js'
@@ -23,10 +42,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 //国际化语言
 import i18n from './lang'
 
+//vuex
+import store from './store'
+
 // icon
 import './icons'
-
-import './test'
 
 Vue.config.productionTip = false
 
@@ -36,14 +56,11 @@ Vue.use(ElementUI, {
 	i18n: (key, value) => i18n.t(key, value)   //设置语言转化
 })
 
-// Vue.component('todo-item', {
-// 	template: '<li>item</li>'
-// })
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   i18n,
   components: { App },
   template: '<App/>'

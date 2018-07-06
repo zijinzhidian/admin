@@ -54,9 +54,18 @@ module.exports = {
       {         //图片转化
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
+        exclude: [resolve('src/icons')],       //不处理src/icons下的文件
         options: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
+        }
+      },
+      {         //svg当作icon的处理
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: [resolve('src/icons')],      //只处理src/icons下的文件
+        options: {
+          symbolId: 'icon-[name]'
         }
       },
       {
