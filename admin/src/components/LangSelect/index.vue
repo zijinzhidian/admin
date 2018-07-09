@@ -1,3 +1,5 @@
+<!-- 语言选择 -->
+
 <template>
 	<!-- 下拉菜单
 		trigger:触发方式,默认为hover激活,click为点击激活
@@ -25,6 +27,7 @@
 					type: 'success',
 					message: 'switch language success'
 				})
+				//保存更改语言
 				this.$store.dispatch('setLanguage', lang)
 			}
 		}
@@ -35,6 +38,5 @@
 	.international-icon {
 		font-size: 20px;
 		cursor: pointer;
-		/*vertical-align: -5px!important;*/
 	}
 </style>

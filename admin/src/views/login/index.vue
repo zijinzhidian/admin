@@ -1,6 +1,6 @@
 <template>
 	<div class="login-container">
-		<el-form class="login-form">
+		<el-form class="login-form" :model="loginForm" :rules="loginRules" ref="loginForm">
 			<!-- 主题 -->
 			<div class="title-container">
 				<h3 class="title">{{$t('login.title')}}</h3>
@@ -12,7 +12,7 @@
 				<span class="svg-container svg-container_login">
 					<svg-icon icon-class="user"></svg-icon>
 				</span>
-    			<el-input name="username" type="text" :placeholder="$t('login.username')"></el-input>
+    			<el-input name="username" type="text" @keyup.enter.native="handleLogin" v-model="loginForm.username" :placeholder="$t('login.username')"></el-input>
   			</el-form-item>
 
   			<!-- 密码 -->
@@ -20,28 +20,76 @@
   				<span class="svg-container">
   					<svg-icon icon-class="password"></svg-icon>
   				</span>
-  				<el-input name="password" type="text" :placeholder="$t('login.password')"></el-input>
+  				<el-input name="password" :type="passwordType" @keyup.enter.native="handleLogin" v-model="loginForm.password" :placeholder="$t('login.password')"></el-input>
   				<span class="show-pwd" @click="showPwd">
     				<svg-icon icon-class="eye"></svg-icon>
     			</span>
   			</el-form-item>
 
   			<!-- 登陆按钮 -->
-  			<el-button style="width:100%;"></el-button>
+  			<el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
+
+  			<!-- 登陆提示 -->
+  			<div class="tips">
+  				<span>{{$t('login.username')}} : admin</span>
+  				<span>{{$t('login.password')}} : {{$t('login.any')}}</span>
+  			</div>
+  			<div class="tips">
+  				<span>{{$t('login.username')}} : editor</span>
+  				<span>{{$t('login.password')}} : {{$t('login.any')}}</span>
+  			</div>
+
+  			<!-- 第三方登录按钮 -->
+  			<el-button class="thirdparty-button" type="primary" @click="showDialog=true">{{$t('login.thirdparty')}}</el-button>
 		</el-form>
+
+		<!-- 对话框 -->
+		<el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog" append-to-body>
+      {{$t('login.thirdpartyTips')}}
+      <br/>
+      <br/>
+      <br/>
+      <social-sign></social-sign>
+    </el-dialog>
 	</div>
 </template>
 
 
 <script>
 	import LangSelect from '@/components/LangSelect'
-
+	import SocialSign from './socialsignin'
+	import { isvalidUsername } from '@/utils/validate'
+ 
 	export default {
 		name: 'login',
-		components: {LangSelect},
+		components: {LangSelect, SocialSign},
 		data() {
+			const validateUsername = (rule, value, callback) => {
+	      if (!isvalidUsername(value)) {
+	        callback(new Error(this.$t('login.usernameError')))
+	      } else {
+	        callback()
+	      }
+    	}
+    	const validatePassword = (rule, value, callback) => {
+	      if (value.length < 6) {
+	        callback(new Error(this.$t('login.passwordError')))
+	      } else {
+	        callback()
+	      }
+    	}
 			return {
-				passwordType: 'password'
+				loginForm: {
+					username: 'admin',
+					password: '111111'
+				},
+				loginRules: {
+					username: [{ required: true, trigger: 'blur', validator: validateUsername }],
+       		password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+				},
+				loading: false,  						//是否正在登录
+				passwordType: 'password',		//密码输入框类型
+				showDialog: false						//是否显示对话框
 			}
 		},
 		methods: {
@@ -52,6 +100,15 @@
 					this.passwordType = 'password'
 				}
 			},
+			handleLogin() {
+				this.$refs.loginForm.validate(valid => {
+					if (valid) {
+						this.loading = true
+					} else {
+					
+					}
+				})
+			}
 		}
 	}
 </script>
@@ -97,7 +154,6 @@ $light_gray:#eee;
 		right: 0;
 		width: 520px;
 		margin: 120px auto;
-		// paddnig: 35px 35px 15px 35px;
 	}
 }
 
@@ -139,5 +195,21 @@ $light_gray:#eee;
 	user-select: none;
 }
 
+.tips {
+	font-size: 14px;
+	color: #fff;
+	margin-bottom: 10px;
+	span {
+		&:first-child {
+			margin-right: 16px;
+		}
+	}
+}
+
+.thirdparty-button {
+	position: absolute;
+	right: 0;
+	bottom: 20px;
+}
 </style>
 

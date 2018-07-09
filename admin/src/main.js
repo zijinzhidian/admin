@@ -31,9 +31,17 @@
 	npm install js-cookie --save
 */
 
+/*
+安装axios(用于数据请求)
+	npm install axios --save
+*/
+
 import Vue from 'vue'        	//完整写法:import Vue from '../node_modules/vue/dist/vue.js'
 import App from './App'		 		//完整写法:import App from './App.vue'
 import router from './router'   //导入的是router文件夹下的index.js文件
+
+//全局样式
+import '@/styles/index.scss'
 
 // Element
 import ElementUI from 'element-ui'
