@@ -43,7 +43,7 @@ import router from './router'   //导入的是router文件夹下的index.js文�
 //全局样式
 import '@/styles/index.scss'
 
-// Element
+//Element
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -53,14 +53,15 @@ import i18n from './lang'
 //vuex
 import store from './store'
 
-// icon
+//icon
 import './icons'
 
-import '@/views/login/authredirect'
+//权限控制
+import './permission'
 
 Vue.config.productionTip = false
 
-// 全局配置Element
+//全局配置Element
 Vue.use(ElementUI, {
 	size: 'medium',     //设置组件默认尺寸
 	i18n: (key, value) => i18n.t(key, value)   //设置语言转化
