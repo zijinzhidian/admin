@@ -56,6 +56,8 @@ import store from './store'
 // icon
 import './icons'
 
+import '@/views/login/authredirect'
+
 Vue.config.productionTip = false
 
 // 全局配置Element
