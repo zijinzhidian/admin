@@ -36,6 +36,11 @@
 	npm install axios --save
 */
 
+/*
+安装mockjs(用于模拟请求数据)
+	npm install mockjs
+*/
+
 import Vue from 'vue'        	//完整写法:import Vue from '../node_modules/vue/dist/vue.js'
 import App from './App'		 		//完整写法:import App from './App.vue'
 import router from './router'   //导入的是router文件夹下的index.js文件
@@ -58,6 +63,9 @@ import './icons'
 
 //权限控制
 import './permission'
+
+//模拟数据
+import './mock'
 
 Vue.config.productionTip = false
 

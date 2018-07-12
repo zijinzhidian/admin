@@ -1,6 +1,7 @@
 import request from '@/utils/request'
 
 export function loginByUsername(username, password) {
+	// post请求参数
 	const data = {
 		username,
 		password
@@ -23,6 +24,6 @@ export function getUserInfo(token) {
   return request({
     url: '/user/info',
     method: 'get',
-    params: { token }
+    params: { token }       //get请求参数
   })
 }

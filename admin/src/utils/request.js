@@ -6,7 +6,7 @@ import { Message } from 'element-ui'
 
 // 创建一个axios实例
 const service = axios.create({
-	baseURL: process.env.BASE_API,
+	baseURL: process.env.BASE_API,        //'baseURL'将自动加在'url'前面,除非'url'是一个绝对URL
 	timeout: 5000
 });
 
@@ -28,8 +28,9 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(
 	// 对响应数据做点什么
 	response => response,
+	// 对响应错误做点什么
 	error => {
-		console.log('err' + error);
+		console.log(error);
 		Message({
 			message: error.message,
 			type: 'error',

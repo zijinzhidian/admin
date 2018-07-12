@@ -13,8 +13,13 @@ const whiteList = ['/login', '/authredirect']
 	next:必须执行的方法,决定执行效果
 */
 router.beforeEach((to, from, next) => {
+	console.log(to)
 	if (getToken()) {						//有token
+		if (to.path === '/login') {		//有token时跳过登录界面
+			next({ path: '/' })
+		} else {
 
+		}
 	} else {       //无token
 		if (whiteList.indexOf(to.path) !== -1) {       //在免登陆白名单中,直接进入
 			next()

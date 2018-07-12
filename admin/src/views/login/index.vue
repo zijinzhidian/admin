@@ -93,6 +93,7 @@
 			}
 		},
 		methods: {
+			// 是否显示密码
 			showPwd() {
 				if (this.passwordType === 'password') {
 					this.passwordType = ''
@@ -100,12 +101,22 @@
 					this.passwordType = 'password'
 				}
 			},
+			// 登陆
 			handleLogin() {
 				this.$refs.loginForm.validate(valid => {
-					if (valid) {
-						this.loading = true
-					} else {
-					
+					if (valid) {     //通过验证
+						this.loading = true	
+						this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
+							// 登陆成功
+							this.loading = false
+							this.$router.push({ path: '/' })
+						}).catch(() => {
+							// 登陆失败
+							this.loading = false
+						})
+					} else {					//未通过验证
+						console.log('error submit!!')
+						return false
 					}
 				})
 			}
