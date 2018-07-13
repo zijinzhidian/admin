@@ -5,5 +5,7 @@ const getters = {
   name: state => state.user.name,							//用户名称
   introduction: state => state.user.introduction,		//用户简介
   roles: state => state.user.roles,						//用户角色
+  permission_routers: state => state.permission.routers,		//权限路由表
+  addRouters: state => state.permission.addRouters,					//动态添加的路由表
 }
 export default getters

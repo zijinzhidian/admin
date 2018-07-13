@@ -23,7 +23,7 @@ export default {
 	},
 	// 用户信息
 	getUserInfo: config => {
-		return false
+		return 'Admin-Token'
 	},
 	// 退出登陆后返回的数据
 	logout: () => 'success'

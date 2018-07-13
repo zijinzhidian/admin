@@ -13,12 +13,26 @@ const whiteList = ['/login', '/authredirect']
 	next:必须执行的方法,决定执行效果
 */
 router.beforeEach((to, from, next) => {
-	console.log(to)
 	if (getToken()) {						//有token
 		if (to.path === '/login') {		//有token时跳过登录界面
 			next({ path: '/' })
 		} else {
-
+			if (store.getters.roles.length === 0) {		//判断是否已经拉取用户信息
+				console.log(12131)
+				store.dispatch('GetUserInfo').then(res => {			//拉取用户信息
+					consle.log(res)
+					const roles = res.data.roles		
+					store.dispatch('GenerateRoutes', { roles }).then(() => {		//根据roles权限生成可访问的路由表
+						router.addRoutes(store.getters.addRouters)			//动态添加可访问路由表
+						next({...to})
+					})
+				}).catch((err) => {
+					store.dispatch('FedLogOut').then(() => {		//拉取失败,重定向至登录页面
+						Message.error(err || 'Verification failed, please login again')
+						next({ path: '/' })
+					})
+				})
+			}
 		}
 	} else {       //无token
 		if (whiteList.indexOf(to.path) !== -1) {       //在免登陆白名单中,直接进入
