@@ -18,13 +18,11 @@ router.beforeEach((to, from, next) => {
 			next({ path: '/' })
 		} else {
 			if (store.getters.roles.length === 0) {		//判断是否已经拉取用户信息
-				console.log(12131)
 				store.dispatch('GetUserInfo').then(res => {			//拉取用户信息
-					consle.log(res)
 					const roles = res.data.roles		
 					store.dispatch('GenerateRoutes', { roles }).then(() => {		//根据roles权限生成可访问的路由表
 						router.addRoutes(store.getters.addRouters)			//动态添加可访问路由表
-						next({...to})
+						next({...to, replace: true})
 					})
 				}).catch((err) => {
 					store.dispatch('FedLogOut').then(() => {		//拉取失败,重定向至登录页面
@@ -32,6 +30,8 @@ router.beforeEach((to, from, next) => {
 						next({ path: '/' })
 					})
 				})
+			} else {
+				next()
 			}
 		}
 	} else {       //无token

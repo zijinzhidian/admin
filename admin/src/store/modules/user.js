@@ -48,7 +48,7 @@ const user = {
 			return new Promise((resolve, reject) => {
 				getUserInfo(state.token).then(response => {     //获取信息成功
 					if (!response.data) {   // 由于mockjs 不支持自定义状态码只能这样写
-						reject(error)
+						reject('error')
 					}
 					const data = response.data
 					if (data.roles && data.roles.length > 0) {		//验证返回的roles数组是否为空

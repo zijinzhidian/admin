@@ -1,3 +1,5 @@
+import { param2Obj } from '@/utils'
+
 const userMap = {
   admin: {
     roles: ['admin'],
@@ -23,7 +25,13 @@ export default {
 	},
 	// 用户信息
 	getUserInfo: config => {
-		return 'Admin-Token'
+    console.log(config)
+		const { token } = param2Obj(config.url)
+    if (userMap[token]) {
+      return userMap[token]
+    } else {
+      return false
+    }
 	},
 	// 退出登陆后返回的数据
 	logout: () => 'success'
