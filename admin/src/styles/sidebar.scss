@@ -1,0 +1,17 @@
+#app {
+	// 主体区域
+	.main-container {
+		background-color: red;
+	}
+
+	// 侧边栏
+	.sidebar-container {
+		// position: fixed;
+		// top: 0;
+		// left: 0;
+		// bottom: 0;
+		// width: 180px !important;
+		background-color: red;
+		padding-left: 10px;
+	}
+}

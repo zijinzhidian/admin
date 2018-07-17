@@ -41,6 +41,11 @@
 	npm install mockjs
 */
 
+/*
+安装screenfull(用于全屏显示)
+	npm install screenfull -save
+*/
+
 import Vue from 'vue'        	//完整写法:import Vue from '../node_modules/vue/dist/vue.js'
 import App from './App'		 		//完整写法:import App from './App.vue'
 import router from './router'   //导入的是router文件夹下的index.js文件

@@ -25,7 +25,7 @@
 				//提示更改成功
 				this.$message({
 					type: 'success',
-					message: 'switch language success'
+					message: this.$t('login.switchLanguageTip')
 				})
 				//保存更改语言
 				this.$store.dispatch('setLanguage', lang)

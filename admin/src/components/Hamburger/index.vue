@@ -35,9 +35,8 @@
     cursor: pointer;
     width: 20px;
     height: 20px;
-    transform: rotate(90deg);     //旋转90度
-    // transition: 5s;
-    // transform-origin: 50% 50%;
+    transform: rotate(90deg);  
+    transition: .38s;                      
   }
 
   .hamburger.is-active {

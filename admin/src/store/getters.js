@@ -1,5 +1,6 @@
 const getters = {
 	language: state => state.app.language,			//语言
+	sidebar: state => state.app.sidebar,				//侧边栏				
 	token: state => state.user.token,						//令牌 
 	avatar: state => state.user.avatar,					//用户头像
   name: state => state.user.name,							//用户名称

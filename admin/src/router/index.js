@@ -25,9 +25,9 @@ name: "router-name";
 //路由元信息
 meta: {
   roles: ["admin", "editor"]; //设置该路由进入的权限，支持多个权限叠加
-  title: "title"; //设置该路由在侧边栏和面包屑中展示的名字
-  icon: "svg-name"; //设置该路由的图标
-  noCache: true; //如果设置为true ,则不会被 <keep-alive> 缓存(默认 false)
+  title: "title"; 						//设置该路由在侧边栏和面包屑中展示的名字
+  icon: "svg-name"; 					//设置该路由的图标
+  noCache: true; 							//如果设置为true ,则不会被 <keep-alive> 缓存(默认 false)
 }
 ****************************/
 
@@ -39,6 +39,13 @@ export const constantRouterMap = [
 	{
 		path: '',
 		component: Layout,
+		redirect: 'dashboard',					//将根路径重定向至'dashboard'
+		children: [{
+			path: 'dashboard',
+			component: () => import('@/views/dashboard/index'),
+			name: 'dashboard',
+			meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+		}]
 	}
 ]
 
