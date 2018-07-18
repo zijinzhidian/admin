@@ -40,7 +40,7 @@ import { generateTitle } from '@/utils/i18n'
 				const first = matched[0]
 				if (first && first.name != 'dashboard') {
 					// 将'dashboard'始终置于第一个位置
-					matched = [{ path: './dashboard', meta: { title: 'dashboard' }}].concat(matched)
+					matched = [{ path: '/dashboard', meta: { title: 'dashboard' }}].concat(matched)
 				}
 				this.levelList = matched
 			}

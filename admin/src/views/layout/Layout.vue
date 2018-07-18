@@ -1,5 +1,5 @@
 <template>
-	<div class="app-wrapper">
+	<div class="app-wrapper" :class="classObj">
 		<sidebar class="sidebar-container"></sidebar>
 		<div class="main-container">
 			<navbar></navbar>
@@ -18,6 +18,19 @@ export default {
 		Navbar,
 		TagsView,
 		Sidebar
+	},
+	computed: {
+		sidebar() {
+			return this.$store.state.app.sidebar
+		},
+		device() {
+			return this.$store.state.app.device
+		},
+		classObj() {
+			return {
+
+			}
+		}
 	}
 }	
 </script>

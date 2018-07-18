@@ -1,17 +1,24 @@
 #app {
 	// 主体区域
 	.main-container {
+		margin-left: 180px;
+		min-height: 100%;          //最小高度,%代表基于包含它的块级元素的百分比最小高度
+		transition: margin-left .28s;
 		background-color: red;
 	}
 
 	// 侧边栏
 	.sidebar-container {
-		// position: fixed;
-		// top: 0;
-		// left: 0;
-		// bottom: 0;
-		// width: 180px !important;
-		background-color: red;
-		padding-left: 10px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 180px !important;
+		transition: with 3s;
+		background-color: yellow;
 	}
+
+	 .scrollbar-wrapper {
+      // overflow-x: hidden !important;    
+    }
 }
