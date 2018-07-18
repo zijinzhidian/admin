@@ -5,9 +5,10 @@ const app = {
 	state: {
 		sidebar: {
 			opened: !+Cookies.get('sidebarStatus'),				//侧边栏状态
-			withoutAnimation: false
+			withoutAnimation: false												//侧边栏是否有动画
 		},
-		language: Cookies.get('language') || 'en'      //缓存的语言
+		language: Cookies.get('language') || 'en',      //缓存的语言
+		device: 'deskTop'						//运行环境,电脑还是手机
 	},
 
 	// 状态变更（必须是同步函数）
@@ -32,6 +33,10 @@ const app = {
 		SET_LANGUEGE: (state, language) => {
 			state.language = language
 			Cookies.set('language', language)
+		},
+		// 更改运行环境
+		TOGGLE_DEVICE: (state, device) => {
+			state.device = device
 		}
 	},
 	
@@ -45,6 +50,9 @@ const app = {
     },
 		setLanguage({ commit }, language) {
 			commit('SET_LANGUEGE', language)
+		},
+		toggleDevice({ commit }, device) {
+			commit('TOGGLE_DEVICE', device)
 		}
 	}
 }

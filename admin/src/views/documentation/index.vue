@@ -1,3 +1,3 @@
 <template>
-	<h1>123</h1>
+	<h1>Documentation</h1>
 </template>

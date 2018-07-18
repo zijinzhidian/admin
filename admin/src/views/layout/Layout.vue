@@ -4,20 +4,22 @@
 		<div class="main-container">
 			<navbar></navbar>
 			<tags-view></tags-view>
+			<app-main></app-main>
 		</div>
 	</div>
 </template>
 
 
 <script>
-import { Navbar, TagsView, Sidebar } from './components'
+import { Navbar, TagsView, Sidebar, AppMain } from './components'
 
 export default {
 	name: 'layout',
 	components: {
 		Navbar,
 		TagsView,
-		Sidebar
+		Sidebar,
+		AppMain
 	},
 	computed: {
 		sidebar() {
@@ -28,7 +30,9 @@ export default {
 		},
 		classObj() {
 			return {
-
+				hideSidebar: !this.sidebar.opened,				//侧边栏是否打开
+				withoutAnimation: this.sidebar.withoutAnimation,		//侧边栏显隐是否有动画
+				mobile: this.device === 'mobile'					//是否运行在手机上
 			}
 		}
 	}

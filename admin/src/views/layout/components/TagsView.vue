@@ -1,5 +1,5 @@
 <template>
-	<h1>123</h1>
+	<div>TagsView</div>
 </template>
 
 <style lang="scss" scoped>

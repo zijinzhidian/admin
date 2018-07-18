@@ -3,22 +3,54 @@
 	.main-container {
 		margin-left: 180px;
 		min-height: 100%;          //最小高度,%代表基于包含它的块级元素的百分比最小高度
-		transition: margin-left .28s;
+		transition: margin-left .28s;			//左边距变化动画时间
 		background-color: red;
 	}
 
-	// 侧边栏
+	// 显示状态的侧边栏
 	.sidebar-container {
 		position: fixed;
 		top: 0;
 		left: 0;
 		bottom: 0;
 		width: 180px !important;
-		transition: with 3s;
+		transition: width .28s;							//宽度变化动画时间
 		background-color: yellow;
+		// 重置element-ui的折叠动画
+		.horizontal-collapse-transition {
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+    }
+		// 滚动区域
+		.scrollbar-wrapper {
+      overflow-x: hidden !important;    
+    }
+    // 侧边栏图标
+		.svg-icon {
+			margin-right: 16px;
+		}
+		// 内容显示区域
+		.el-menu {
+			border: none;
+			height: 100%;
+			width: 100%;
+		}
 	}
 
-	 .scrollbar-wrapper {
-      // overflow-x: hidden !important;    
+	// 隐藏状态的侧边栏
+	.hideSidebar {
+		.sidebar-container {
+			width: 36px !important;
+		}
+		.main-container {
+			margin-left: 36px;
+		}
+		.submenu-title-noDropdown {
+      // padding-left: 10px !important;
+      // position: relative;
+      .el-tooltip {
+        padding: 0 10px !important;				//重置icon的偏移量
+      }
     }
+	}
+	
 }
