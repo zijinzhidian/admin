@@ -74,4 +74,9 @@ export default {
 	    clipboardDemo: 'Clipboard',
 	    i18n: 'I18n'
   	},
+  	tagsView: {
+	    close: 'Close',
+	    closeOthers: 'Close Others',
+	    closeAll: 'Close All'
+  	}
 }

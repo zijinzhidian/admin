@@ -35,7 +35,7 @@ const tagsView = {
 			}
 		},
 
-		// 删除除了选中元素外的视图
+		// 删除除了指定试图外的视图
 		DEL_OTHERS_VIEWS: (state, view) => {
 			for (const [i, v] of state.visitedViews.entries()) {
 				if (v.path === view.path) {

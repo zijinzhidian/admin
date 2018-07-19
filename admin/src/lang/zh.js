@@ -74,5 +74,10 @@ export default {
 	    clipboardDemo: 'Clipboard',
 	    i18n: '国际化'
 	  },
+	  tagsView: {
+	    close: '关闭',
+	    closeOthers: '关闭其它',
+	    closeAll: '关闭所有'
+  	}
 }
 
