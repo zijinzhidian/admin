@@ -49,7 +49,7 @@ import { generateTitle } from '@/utils/i18n'
 </script>
 
 
-<style lang="scss" scoped="">
+<style lang="scss" scoped>
 	.app-breadcrumb {
 		display: inline-block;
 		font-size: 14px;

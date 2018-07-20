@@ -11,7 +11,7 @@
 				@contextmenu.prevent.native="openMenu(tag, $event)"
 			>
 				{{generateTitle(tag.title)}}
-				<span class="el-icon-close" @click="closeSelectedTag(tag)"></span>
+				<span class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)"></span>
 			</router-link>
 		</scroll-pane>
 		<ul class="contextmenu" v-show="visible" :style="{left: left+'px', top: top+'px'}">
@@ -100,17 +100,16 @@
 			},
 			// 关闭所有试图
 			closeAllTags() {
-				this.store.dispatch('delAllViews')
+				this.$store.dispatch('delAllViews')
 				this.$router.push('/')
 			},
-			// 移动到当前视图
+			// 移至当前视图
 			moveToCurrentTags() {
 				const tags = this.$refs.tag    //还存在的试图组件数组
 				this.$nextTick(() => {
 					for (const tag of tags) {
 						if (tag.to.path === this.$route.path) {
-							console.log(this.$refs.scollPane)
-							this.$refs.scrollPane.moveToTarget(tag.$el)
+							// this.$refs.scrollPane.moveToTarget(tag.$el)
 							break
 						}
 					}
@@ -202,8 +201,8 @@
 		vertical-align: 2px;
 		text-align: center;				//水平居中
 		border-radius: 50%;				//圆角
-		// transition: all .3s cubic-bezier(.645, .045, .355, 1);
-    // transform-origin: 100% 50%;
+		transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    transform-origin: 100% 50%;
 		&:hover {
 			background-color: #b4bccc;     //图标激活背景颜色
 			color: #fff;									 //图标激活颜色

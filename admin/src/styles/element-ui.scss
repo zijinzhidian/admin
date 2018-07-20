@@ -1,0 +1,6 @@
+// 覆盖一些element-ui样式
+
+// 面包屑文字字体粗细
+.el-breadcrumb__inner, .el-breadcrumb__inner a{
+  font-weight: 400!important;
+}

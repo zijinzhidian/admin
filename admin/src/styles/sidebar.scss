@@ -4,7 +4,6 @@
 		margin-left: 180px;
 		min-height: 100%;          //最小高度,%代表基于包含它的块级元素的百分比最小高度
 		transition: margin-left .28s;			//左边距变化动画时间
-		background-color: red;
 	}
 
 	// 显示状态的侧边栏
@@ -13,16 +12,22 @@
 		top: 0;
 		left: 0;
 		bottom: 0;
+		z-index: 1001;
 		width: 180px !important;
+		height: 100%;
+		font-size: 0px;
 		transition: width .28s;							//宽度变化动画时间
-		background-color: yellow;
+		overflow: hidden;
 		// 重置element-ui的折叠动画
 		.horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
     }
 		// 滚动区域
 		.scrollbar-wrapper {
-      overflow-x: hidden !important;    
+      overflow-x: hidden !important; 
+      .el-scrollbar__view {
+      	height: 100%;				//设置滚动区域的高度占满屏幕
+      }
     }
     // 侧边栏图标
 		.svg-icon {
@@ -51,6 +56,29 @@
         padding: 0 10px !important;				//重置icon的偏移量
       }
     }
+	}
+
+	// 适配移动端
+	.mobile {
+		.main-container {
+			margin-left: 0px;
+		}
+		.sidebar-container {
+			transition: transform .28s;
+			width: 180px !important;
+		}
+		&.hideSidebar {
+			.sidebar-container {
+				transition-duration: .3s;
+				transform: translate3d(-180px,0,0);
+			}
+		}
+		.withoutAnimation {
+			.main-container,
+			.sidebar-container {
+				transition: none;
+			}
+		}
 	}
 	
 }

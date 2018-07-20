@@ -43,7 +43,12 @@
 
 /*
 安装screenfull(用于全屏显示)
-	npm install screenfull -save
+	npm install screenfull --save
+*/
+
+/*
+安装countup(用于数字动画跳动)
+	npm install --save countup.js vue-countup-v2
 */
 
 import Vue from 'vue'        	//完整写法:import Vue from '../node_modules/vue/dist/vue.js'
