@@ -9,7 +9,7 @@
 
 		<el-col class="card-panel-col" :xs="12" :sm="12" :lg="6">
 			<!-- 整个卡片 -->
-			<div class="card-panel" @click="handleSetLineChartData('newVisits')">
+			<div class="card-panel" @click="handleSetLineChartData('newVisitis')">
 				<!-- 卡片图标 -->
 				<div class="card-panel-icon-wrapper icon-people">
 					<svg-icon icon-class="peoples" class-name="card-panel-icon"></svg-icon>

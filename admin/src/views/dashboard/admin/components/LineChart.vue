@@ -5,6 +5,7 @@
 
 <script>
 	import echarts from 'echarts'
+	require('echarts/theme/macarons')			//引入macarons主题
 
 	export default {
 		props: {
@@ -34,9 +35,8 @@
 			}
 		},
 		methods: {
-			setOptions() {
-				const myChart = echarts.init(document.getElementsByClassName(this.className)[0])
-				myChart.setOption({
+			setOptions({ expectedData, actualData } = {}) {
+				this.chart.setOption({
 					// x轴
 					xAxis: {
 						data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],       // 刻度标签显示数据
@@ -72,15 +72,55 @@
 						data: ['expected', 'actual']      //图例的数据数组,每一项代表一个系列(series)的name
 					},
 					// 系列列表
-					series: [{
-						type: 'line',				//系列类型
-						name: 'expected'		//系列名称，用于tooltip的显示，legend的图例筛选(需要和legend的data相对应,否则)
-					}]
+					series: [
+						{
+							type: 'line',				//系列类型
+							name: 'expected',		//系列名称，用于tooltip的显示，legend的图例筛选(需要和legend的data相对应)
+							smooth: true,				//连接点是否以平滑曲线显示，默认为false。如果为number类型，取值范围为[0,1],true相当于0.5
+							animationDuration: 2800,		//初始动画时长,默认1000
+							animationEasing: 'cubicInOut',   //初始动画的缓动效果,默认linear
+							data: expectedData,   //系列坐标数据内容数组
+							lineStyle: {        //线条样式
+								color: '#ff005a',			//线条颜色
+								width: 2.5,						//线条宽度
+								type: 'dashed'				//线条类型
+							},
+							areaStyle: {						//区域填充样式
+								color: '#f3f8ff'
+							}
+						},
+						{
+							type: 'line',
+							name: 'actual',
+							smooth: true,
+							animationDuration: 2800,
+							animationEasing: 'quadraticOut',
+							data: actualData,
+							lineStyle: {
+								color: '#3888fa',
+								width: 2.5
+							}
+						}
+					]
 				})
-			} 
+			},
+			// 初始化echarts对象
+			initChart() {
+				this.chart = echarts.init(this.$el, 'macarons')		
+      	this.setOptions(this.chartData)
+			}
+		},
+		// 监听数据的变化
+		watch: {
+			chartData(val) {
+				this.setOptions(val)
+			}
+		},
+		beforeDestroy() {
+			
 		},
 		mounted() {
-			this.setOptions()
+			this.initChart()
 		}
 	}
 

@@ -4,5 +4,13 @@ export function param2Obj(url) {
     return {}
   }
   return JSON.parse('{"' + decodeURIComponent(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
+}
 
+
+function debounce(func, wait, immediate) {
+	let timeout, args, context, timestamp, result
+
+	const later = function() {
+		const last = +new Date()
+	}
 }
