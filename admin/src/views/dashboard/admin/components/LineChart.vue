@@ -6,6 +6,7 @@
 <script>
 	import echarts from 'echarts'
 	require('echarts/theme/macarons')			//引入macarons主题
+	import { debounce } from '@/utils' 
 
 	export default {
 		props: {
@@ -116,11 +117,28 @@
 				this.setOptions(val)
 			}
 		},
-		beforeDestroy() {
-			
-		},
 		mounted() {
 			this.initChart()
+			if (autoResize) {
+				this.__resizeHandle = debounce(() => {
+					if (this.chart) this.chart.resize()
+				}, 100)
+				// 监听屏幕的变化
+				window.addEventListener('resize', this.__resizeHandle)
+			}
+			//监听侧边栏的变化
+			const sidebarElm = document.getElementsByClassName('sidebar-container')[0]
+			sidebarElm.addEventListener('transitionend', this.__resizeHandle)
+		},
+		beforeDestroy() {
+			if (!this.chart) return
+			if (this.autoResize) window.removeEventListener('resize', this.__resizeHanlder)
+
+			const sidebarElm = document.getElementsByClassName('sidebar-container')[0]
+			sidebarElm.removeEventListener('transitionend', this.__resizeHanlder)
+
+			this.chart.dispose()
+			this.chart = null
 		}
 	}
 
