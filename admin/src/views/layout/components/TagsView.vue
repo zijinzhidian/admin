@@ -105,7 +105,7 @@
 			},
 			// 移至当前视图
 			moveToCurrentTags() {
-				const tags = this.$refs.tag    //还存在的试图组件数组
+				const tags = this.$refs.tag    //还存在的视图组件数组
 				this.$nextTick(() => {
 					for (const tag of tags) {
 						if (tag.to.path === this.$route.path) {

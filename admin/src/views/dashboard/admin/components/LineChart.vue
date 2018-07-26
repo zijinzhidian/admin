@@ -119,7 +119,7 @@
 		},
 		mounted() {
 			this.initChart()
-			if (autoResize) {
+			if (this.autoResize) {
 				this.__resizeHandle = debounce(() => {
 					if (this.chart) this.chart.resize()
 				}, 100)

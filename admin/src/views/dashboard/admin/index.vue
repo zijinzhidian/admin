@@ -8,13 +8,45 @@
 			<line-chart :chart-data="lineChartData"></line-chart>	
 		</el-row>
 		
+		<el-row :gutter="32">
+			<el-col :xs="24" :sm="24" :lg="8">
+				<div class="chart-wrapper">
+					<radar-chart></radar-chart>
+				</div>
+			</el-col>
+      <el-col :xs="24" :sm="24" :lg="8">
+        <div class="chart-wrapper">
+          <pie-chart></pie-chart>
+        </div>
+      </el-col>
+      <el-col :xs="24" :sm="24" :lg="8">
+        <div class="chart-wrapper">
+          <bar-chart></bar-chart>
+        </div>
+      </el-col>
+		</el-row>
+
+		<el-row :gutter="8">
+			<el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12" style="padding-right: 8px;margin-bottom: 30px">
+				<transaction-table></transaction-table>
+			</el-col>
+			<el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6" style="margin-bottom: 30px;">
+				<todo-list></todo-list>
+			</el-col>
+		</el-row>
+
 	</div>
 </template>
 
 <script>
 	import GithubCorner from '@/components/GithubCorner'
 	import PanelGroup from './components/PanelGroup'
-	import LineChart from './components/LineChart'
+	import LineChart from './components/LineChart'				//线状图
+	import RadarChart from './components/RadarChart'			//雷达图
+	import PieChart from './components/PieChart'					//饼状图
+	import BarChart from './components/BarChart'					//柱状图
+	import TransactionTable from './components/TransactionTable'			//账单图
+	import TodoList from './components/TodoList'
 
 	const lineChartData = {
 	  newVisitis: {
@@ -40,7 +72,12 @@
 		components: {
 			GithubCorner,
 			PanelGroup,
-			LineChart
+			LineChart,
+			RadarChart,
+			PieChart,
+			BarChart,
+			TransactionTable,
+			TodoList
 		},
 		data() {
 			return {
@@ -59,5 +96,10 @@
 	.dashboard-admin-container {
 		padding: 32px;
 		background-color: rgb(240,242,245);
+		.chart-wrapper {
+			background-color: #fff;
+			padding: 16px 16px 0;
+			margin-bottom: 32px;
+		}
 	}
 </style>

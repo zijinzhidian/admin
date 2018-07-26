@@ -13,7 +13,7 @@ export function param2Obj(url) {
  * @param {Boolean} immediate 设置方法在开启定时器时调用,还是在开启定时器wait毫秒后调用
  * @return 闭包返回的函数
  */
-function debounce(func, wait, immediate) {
+export function debounce(func, wait, immediate) {
 	/*
 	timeout:定时器对象
 	args:传入的参数(数组)

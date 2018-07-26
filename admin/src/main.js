@@ -82,12 +82,20 @@ import './permission'
 //模拟数据
 import './mock'
 
+//全局过滤器
+import * as filters from './filters'
+
 Vue.config.productionTip = false
 
 //全局配置Element
 Vue.use(ElementUI, {
 	size: 'medium',     //设置组件默认尺寸
 	i18n: (key, value) => i18n.t(key, value)   //设置语言转化
+})
+
+//注册全局过滤器
+Object.keys(filters).forEach(key => {			//Object.keys()  获取对象的所有键值,返回一个数组
+	Vue.filter(key, filters[key])
 })
 
 /* eslint-disable no-new */
