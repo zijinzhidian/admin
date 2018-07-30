@@ -25,7 +25,6 @@ export default {
 	},
 	// 用户信息
 	getUserInfo: config => {
-    console.log(config)
 		const { token } = param2Obj(config.url)
     if (userMap[token]) {
       return userMap[token]

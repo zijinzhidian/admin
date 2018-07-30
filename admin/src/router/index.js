@@ -36,6 +36,8 @@ meta: {
 export const constantRouterMap = [
 	{ path: '/login', component: () => import('@/views/login/index'), hidden: true },
 	{ path: '/authredirect', component: () => import('@/views/login/authredirect'), hidden:true },
+	{ path: '/404', component: () => import('@/views/errorPage/404'), hidden: true },
+	{ path: '401', component: () => import('@/views/errorPage/401'), hidden: true },
 	{
 		path: '',
 		component: Layout,
@@ -76,26 +78,38 @@ export const asyncRouterMap = [
 	{
 		path: '/permission',
 		component: Layout,
+		redirect: 'permission/index',    //无该路径,因此push到该路径时会导航至404界面
 		alwaysShow: true,
 		meta: {
 			title: 'permission',
 			icon: 'lock',
 			roles: ['admin', 'editor']
 		},
-		children: [{
-			path: 'page',
-			component: () => import('@/views/permission/page'),
-			name: 'pagePermission',
-			meta: {
-				title: 'pagePermission',
-				roles: ['admin']
-			}
-		}, {
-			path: 'directive',
-			component: () => import('@/views/permission/directive'),
-			name: 'directivePermission',
-			meta: { title: 'directivePermission' } 
-		}]
+		children: [
+			{ path: 'page', component: () => import('@/views/permission/page'), name: 'pagePermission', meta: { title: 'pagePermission', roles: ['admin'] }}, 
+			{ path: 'directive', component: () => import('@/views/permission/directive'), name: 'directivePermission', meta: { title: 'directivePermission' }}
+		]
+	},
+
+	{
+		path: '/error',
+		component: Layout,
+		redirect: 'noredirect',
+		name: 'errorPages',
+		meta:{
+			title: 'errorPages',
+			icon: '404'
+		},
+		children: [
+      { path: '401', component: () => import('@/views/errorPage/401'), name: 'page401', meta: { title: 'page401', noCache: true }},
+      { path: '404', component: () => import('@/views/errorPage/404'), name: 'page404', meta: { title: 'page404', noCache: true }}
+    ]
+	},
+
+	{
+		path: '*',
+		redirect: '/404',
+		hidden: true
 	}
 ]
 
