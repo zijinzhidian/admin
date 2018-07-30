@@ -56,6 +56,10 @@
 	npm install --save echarts
 */
 
+/*安装driver.js(用于页面分布引导)
+	npm install driver.js
+*/
+
 import Vue from 'vue'        	//完整写法:import Vue from '../node_modules/vue/dist/vue.js'
 import App from './App'		 		//完整写法:import App from './App.vue'
 import router from './router'   //导入的是router文件夹下的index.js文件
@@ -107,4 +111,8 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+
+// TagsView的滚动
+// 
 

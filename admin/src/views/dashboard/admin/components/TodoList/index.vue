@@ -9,17 +9,19 @@
 			<input id="toggle-all" class="toggle-all" type="checkbox" :checked="allChecked" @change="toggleAll()">
 			<label for="toggle-all"></label>
 			<ul class="todo-list">
-				<todo @toggleTodo="toggleTodo" @editTodo="editTodo" @deleteTodo="deleteTodo" v-for="(todo, index) in todos" :key="index" :todo="todo"></todo>
+				<todo @toggleTodo="toggleTodo" @deleteTodo="deleteTodo" v-for="(todo, index) in filteredTodos" :key="index" :todo="todo"></todo>
 			</ul>
 		</section>
 		<!-- footer -->
 		<footer class="footer" v-show="todos.length">
-			<span class="todo=count">
+			<span class="todo-count">
 				<strong>{{ remaining }}</strong>
 				{{ remaining | pluralize('item') }} left
 			</span>
 			<ul class="filters">
-				<li v-for="(value, key)"></li>
+				<li v-for="(value, key) in filters" :key="key">
+					<a :class="{ selected: visibility === key }" @click.prevent="visibility = key">{{ key | capitalize }}</a>
+				</li>
 			</ul>
 		</footer>
 	</section>
@@ -42,7 +44,7 @@
 	const filters = {
 		all: todos => todos,			//全部
 		active: todos => todos.filter(todo => !todo.done),		//未完成的
-		compelted: todos => todos.filter(todo => todo.done)		//已完成的
+		completed: todos => todos.filter(todo => todo.done)		//已完成的
 	}
 
 	export default {
@@ -50,7 +52,8 @@
 		data() {
 			return {
 				todos: defaultList,
-				filters
+				filters,
+				visibility: 'all'
 			}
 		},
 		methods: {
@@ -65,10 +68,6 @@
 			// 删除菜单
 			deleteTodo(todo) {
 				this.todos.splice(this.todos.indexOf(todo), 1)
-			},
-			// 编辑菜单
-			editTodo({ todo, value }) {
-				todo.text = value
 			},
 			// 菜单状态的改变
 			toggleTodo(todo) {
@@ -90,10 +89,15 @@
 			// 未完成的个数
 			remaining() {
 				return this.todos.filter(todo => !todo.done).length
+			},
+			// 选择过滤
+			filteredTodos() {
+				return filters[this.visibility](this.todos)
 			}
 		},
 		filters: {
-			pluralize: (remaining, content) => remaining === 1 ? content : content + 's'
+			pluralize: (remaining, content) => remaining === 1 ? content : content + 's',
+			capitalize: str => str.charAt(0).toUpperCase() + str.slice(1)			//首字母大写
 		}
 	}
 </script>

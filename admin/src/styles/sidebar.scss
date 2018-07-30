@@ -39,6 +39,13 @@
 			height: 100%;
 			width: 100%;
 		}
+		// 子菜单的内容
+		.el-submenu .el-menu-item {
+			background-color: $subMenuBg !important;
+			&:hover {
+				background-color: $menuHover !important;
+			} 
+		}
 	}
 
 	// 隐藏状态的侧边栏

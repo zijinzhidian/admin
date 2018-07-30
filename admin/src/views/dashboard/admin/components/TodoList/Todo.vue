@@ -13,6 +13,7 @@
 		<input
 			class="edit"
 			v-show="editing"
+			v-focus="editing"
 			:value="todo.text"
 			@keyup.enter="doneEdit"
 			@keyup.esc="cancelEdit"
@@ -28,6 +29,17 @@
 		data() {
 			return {
 				editing: false	
+			}
+		},
+		directives: {
+			// el为指令绑定的元素,即input标签
+			// context为该VueComponent对象
+			focus(el, { value }, { context }) {
+				if (value) {
+					context.$nextTick(() => {
+						el.focus()
+					})
+				}
 			}
 		},
 		methods: {
@@ -46,8 +58,7 @@
 				if (!value) {			//无数据则删除
 					this.deleteTodo(todo)
 				} else {
-					// this.$emit
-					todo.text = value
+					todo.text = value       //props为对象时，修改其值会影响父组件中的todos
 				} 
 				this.editing = false 
 			},

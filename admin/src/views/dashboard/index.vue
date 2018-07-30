@@ -24,7 +24,7 @@
 		created() {
 			// 设置用户角色权限
 			if (!this.roles.includes('admin')) {
-				this.currentRole = 'adminDashboard'
+				this.currentRole = 'editorDashboard'
 			}
 		}
 	}

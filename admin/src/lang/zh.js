@@ -78,6 +78,19 @@ export default {
 	    close: '关闭',
 	    closeOthers: '关闭其它',
 	    closeAll: '关闭所有'
-  	}
+  	},
+	  documentation: {
+	    documentation: '文档',
+	    github: 'Github 地址',
+	    articles: '系列文章'
+	  },
+	  guide: {
+    	description: '引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能。本 Demo 是基于',
+    	button: '打开引导'
+  	},
+  	permission: {
+    	roles: '你的权限',
+    	switchRoles: '切换权限'
+  	},
 }
 

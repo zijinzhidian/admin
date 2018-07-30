@@ -1,3 +1,5 @@
+<!-- 右上角落链接GitHub的组件 -->
+
 <template>
 	<a href="https://github.com/PanJiaChen/vue-element-admin" target="_blank" class="github-corner" aria-label="View source on Github">
 		<svg width="80" height="80" viewBox="0 0 250 250" style="fill:#40c9c6; color:#fff; position: absolute; top: 84px; border: 0; right: 0;"

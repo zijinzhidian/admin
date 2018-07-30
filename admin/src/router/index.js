@@ -57,12 +57,46 @@ export const constantRouterMap = [
 			name: 'documentation',
 			meta: { title: 'documentation', icon: 'documentation', noCache: true }
 		}]
+	},
+	{
+		path: '/guide',
+		component: Layout,
+		redirect: 'guide/index',
+		children: [{
+			path: 'index',
+			component: () => import('@/views/guide/index'),
+			name: 'guide',
+			meta: { title: 'guide', icon: 'guide', noCache:true }
+		}]
 	}
 ]
 
 // 异步挂载的路由,动态需要根据权限加载的路由表
 export const asyncRouterMap = [
-	
+	{
+		path: '/permission',
+		component: Layout,
+		alwaysShow: true,
+		meta: {
+			title: 'permission',
+			icon: 'lock',
+			roles: ['admin', 'editor']
+		},
+		children: [{
+			path: 'page',
+			component: () => import('@/views/permission/page'),
+			name: 'pagePermission',
+			meta: {
+				title: 'pagePermission',
+				roles: ['admin']
+			}
+		}, {
+			path: 'directive',
+			component: () => import('@/views/permission/directive'),
+			name: 'directivePermission',
+			meta: { title: 'directivePermission' } 
+		}]
+	}
 ]
 
 export default new Router({

@@ -1,3 +1,5 @@
+<!-- 主题选择控件 -->
+
 <template>
   <el-color-picker
     class="theme-picker"

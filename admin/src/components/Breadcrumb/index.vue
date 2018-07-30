@@ -1,3 +1,5 @@
+<!-- 面包屑导航组件 -->
+
 <template>
 	<!-- 面包屑 -->
 	<el-breadcrumb class="app-breadcrumb" separator=">">

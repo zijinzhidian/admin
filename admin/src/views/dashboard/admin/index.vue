@@ -33,6 +33,9 @@
 			<el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6" style="margin-bottom: 30px;">
 				<todo-list></todo-list>
 			</el-col>
+			<el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6" style="margin-bottom: 30px;">
+				<box-card></box-card>
+			</el-col>
 		</el-row>
 
 	</div>
@@ -46,7 +49,8 @@
 	import PieChart from './components/PieChart'					//饼状图
 	import BarChart from './components/BarChart'					//柱状图
 	import TransactionTable from './components/TransactionTable'			//账单图
-	import TodoList from './components/TodoList'
+	import TodoList from './components/TodoList'					//菜单图
+	import BoxCard from './components/BoxCard'
 
 	const lineChartData = {
 	  newVisitis: {
@@ -77,7 +81,8 @@
 			PieChart,
 			BarChart,
 			TransactionTable,
-			TodoList
+			TodoList,
+			BoxCard
 		},
 		data() {
 			return {

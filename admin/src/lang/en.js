@@ -78,5 +78,18 @@ export default {
 	    close: 'Close',
 	    closeOthers: 'Close Others',
 	    closeAll: 'Close All'
-  	}
+  	},
+  	documentation: {
+	    documentation: 'Documentation',
+	    github: 'Github Repository',
+	    articles: 'Series Articles'
+  	},
+  	guide: {
+    	description: 'The guide page is useful for some people who entered the project for the first time. You can briefly introduce the features of the project. Demo is based on ',
+    	button: 'Show Guide'
+  	},
+  	permission: {
+    	roles: 'Your roles',
+    	switchRoles: 'Switch roles'
+  	},
 }

@@ -1,3 +1,6 @@
+<!-- 控制侧边栏显隐的组件 -->
+
+
 <template>
   <div>
     <svg t="1492500959545" @click="toggleClick" class="hamburger" :class="{'is-active':isActive}" style="" viewBox="0 0 1024 1024"
