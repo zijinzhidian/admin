@@ -63,6 +63,12 @@
         padding: 0 10px !important;				//重置icon的偏移量
       }
     }
+    .el-submenu > .el-submenu__title {
+    	padding-left: 10px !important;			
+    	.el-submenu__icon-arrow {
+    		display: none;			//隐藏箭头图标
+    	}
+    }
 	}
 
 	// 适配移动端

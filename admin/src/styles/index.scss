@@ -32,11 +32,6 @@ html{
 	box-sizing: inherit;
 }
 
-* {
-	margin: 0;
-	padding: 0; 
-}
-
 a:focus,
 a:active {
   outline: none;
@@ -48,6 +43,16 @@ a:hover {
   cursor: pointer;
   color: inherit;
   text-decoration: none;		//去除下划线
+}
+
+// <a>标签常用样式
+.link-type,
+.link-type:focus {
+	color: #337ab7;
+	cursor: pointer;
+	&:hover {
+		color: rgb(32, 160, 225);
+	}
 }
 
 // app-container全局样式
@@ -67,4 +72,15 @@ a:hover {
 		color: #42b983;
 		font-weight: 600;
 	}
+}
+
+// code代码块
+code {
+	display: block;
+	padding: 15px 16px;
+	margin-bottom: 20px;
+	font-size: 15px;
+	line-height: 36px;
+	font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+	background-color: #eef1f6;
 }

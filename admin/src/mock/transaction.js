@@ -22,8 +22,3 @@ export default {
 	}
 }
 
-
-/*Mock.mock(template)
-
-
-*/

@@ -1,3 +1,7 @@
 import permission from './permission'
 
-console.log(permission)
+permission.install = function(Vue) {
+	Vue.derective('permission', permission)
+}
+
+export default permission

@@ -1,6 +1,6 @@
 const data = {
   state: {
-    iconsMap: []
+    iconsMap: []     //svg-icon对象数组
   },
   generate(iconsMap) {
     this.state.iconsMap = iconsMap

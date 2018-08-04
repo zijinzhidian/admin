@@ -1,6 +1,7 @@
 import Mock from 'mockjs'
 import loginAPI from './login'
 import transactionAPI from './transaction'
+import articleAPI from './article'
 
 /*
 Mock.mock(rurl, rtype, function(options))
@@ -18,5 +19,8 @@ Mock.mock(/\/user\/info\.*/, 'get', loginAPI.getUserInfo)
 
 // 账单相关
 Mock.mock(/\/transaction\/list/, 'get', transactionAPI.getList)
+
+// 文章相关
+Mock.mock(/\/article\/list/, 'get', articleAPI.getList)
 
 export default Mock

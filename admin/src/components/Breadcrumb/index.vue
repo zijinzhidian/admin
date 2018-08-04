@@ -8,7 +8,7 @@
 			<!-- 面包屑元素 -->
 			<el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path" v-if="item.meta.title">
 				<!-- 不可点击的元素(index==levelList.length-1 代表若只有一个元素即首页,让其不可点击) -->
-				<span v-if='item.redirect==="noredict"||index==levelList.length-1' class="no-redirect">{{generateTitle(item.meta.title)}}</span>
+				<span v-if='item.redirect==="noredirect"||index==levelList.length-1' class="no-redirect">{{generateTitle(item.meta.title)}}</span>
 				<!-- 可点击的元素 -->
 				<router-link v-else :to="item.redirect||item.path">{{generateTitle(item.meta.title)}}</router-link>
 			</el-breadcrumb-item>

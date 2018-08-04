@@ -1,6 +1,6 @@
 <template>
 	<div class="tags-view-container">
-		<scroll-pane class="tags-view-wrapper" ref="scollPane">
+		<scroll-pane class="tags-view-wrapper" ref="scrollPane">
 			<router-link 
 				class="tags-view-item" 
 				ref="tag" 
@@ -53,7 +53,7 @@
 			//监听路由的变化
 			$route() {
 				this.addViewTags()
-				this.moveToCurrentTags()
+				this.moveToCurrentTag()
 			}
 		},
 		methods: {
@@ -95,7 +95,7 @@
 			closeOthersTags() {
 				this.$router.push(this.selectedTag) 
 				this.$store.dispatch('delOthersViews', this.selectedTag).then(() => {
-					this.moveToCurrentTags()
+					this.moveToCurrentTag()
 				})
 			},
 			// 关闭所有试图
@@ -104,12 +104,12 @@
 				this.$router.push('/')
 			},
 			// 移至当前视图
-			moveToCurrentTags() {
+			moveToCurrentTag() {
 				const tags = this.$refs.tag    //还存在的视图组件数组
 				this.$nextTick(() => {
 					for (const tag of tags) {
 						if (tag.to.path === this.$route.path) {
-							// this.$refs.scrollPane.moveToTarget(tag.$el)
+							this.$refs.scrollPane.moveToTarget(tag.$el)    //tag.$el-->DOM元素
 							break
 						}
 					}

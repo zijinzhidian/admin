@@ -1,3 +1,6 @@
+/**
+ * 将get请求的url的请求参数包装成对象
+ */
 export function param2Obj(url) {
   const search = url.split('?')[1]     //split()以某分隔符将字符串分割成数组
   if (!search) {
@@ -53,4 +56,38 @@ export function debounce(func, wait, immediate) {
 		}
 		return result
 	}
+}
+
+
+export function parseTime(time, cFormat) {
+	if (arguments.length === 0) return null			//如果参数个数为0,返回空
+
+	const format = cFormat ||	'{y}-{m}-{d} {h}:{i}:{s}'	
+	let date
+	
+	// 判断time是时间戳还是时间对象Date
+	if (typeof(time) === 'object') {
+		date = time
+	} else {
+		if (('' + time).length === 10) {				//如果时间戳以秒为单位,换为毫秒
+			time = parseInt(time) * 1000
+		}  
+		date = new Date(time)			//时间戳转时间对象
+	}
+
+	// 时间格式化
+	const formatObj = {
+		y: date.getFullYear(),
+    m: date.getMonth() + 1,
+    d: date.getDate(),
+    h: date.getHours(),
+    i: date.getMinutes(),
+    s: date.getSeconds(),
+    a: date.getDay()				//星期
+	}
+
+	const time_tr = format.replace(/{(y)}/g, (result, key) => {
+		console.log(result)
+		console.log(key)
+	})
 }

@@ -24,7 +24,7 @@ name: "router-name";
 
 //路由元信息
 meta: {
-  roles: ["admin", "editor"]; //设置该路由进入的权限，支持多个权限叠加
+  roles: ["admin", "editor"]; //设置该路由进入的权限，支持多个权限叠加(如果没有设置权限,则代表该页面不需要请求权限)
   title: "title"; 						//设置该路由在侧边栏和面包屑中展示的名字
   icon: "svg-name"; 					//设置该路由的图标
   noCache: true; 							//如果设置为true ,则不会被 <keep-alive> 缓存(默认 false)
@@ -37,7 +37,7 @@ export const constantRouterMap = [
 	{ path: '/login', component: () => import('@/views/login/index'), hidden: true },
 	{ path: '/authredirect', component: () => import('@/views/login/authredirect'), hidden:true },
 	{ path: '/404', component: () => import('@/views/errorPage/404'), hidden: true },
-	{ path: '401', component: () => import('@/views/errorPage/401'), hidden: true },
+	{ path: '/401', component: () => import('@/views/errorPage/401'), hidden: true },
 	{
 		path: '',
 		component: Layout,
@@ -78,7 +78,7 @@ export const asyncRouterMap = [
 	{
 		path: '/permission',
 		component: Layout,
-		redirect: 'permission/index',    //无该路径,因此push到该路径时会导航至404界面
+		redirect: '/permission/index',    //无该路径,因此push到该路径时会导航至404界面
 		alwaysShow: true,
 		meta: {
 			title: 'permission',
@@ -88,6 +88,29 @@ export const asyncRouterMap = [
 		children: [
 			{ path: 'page', component: () => import('@/views/permission/page'), name: 'pagePermission', meta: { title: 'pagePermission', roles: ['admin'] }}, 
 			{ path: 'directive', component: () => import('@/views/permission/directive'), name: 'directivePermission', meta: { title: 'directivePermission' }}
+		]
+	},
+
+
+	{
+		path: '/icon',
+		component: Layout,
+		children: [{ path: 'index', component: () => import('@/views/svg-icons/index'), name: 'icons', meta: { title: 'icons', icon: 'icon', noCache: true }}]
+	},
+
+	{
+		path: '/charts',
+		component: Layout,
+		name: 'charts',
+		redirect: 'noredirect',
+		meta: {
+			title: 'charts',
+			icon: 'chart'
+		},
+		children: [
+			{ path: 'keyboard', component: () => import('@/views/charts/keyboard'), name: 'keyboardChart', meta: { title: 'keyboardChart', noCache: true }},
+			{ path: 'line', component: () => import('@/views/charts/line'), name: 'lineChart', meta: { title: 'lineChart', noCache: true }},
+      { path: 'mixchart', component: () => import('@/views/charts/mixChart'), name: 'mixChart', meta: { title: 'mixChart', noCache: true }}
 		]
 	},
 
@@ -107,10 +130,17 @@ export const asyncRouterMap = [
 	},
 
 	{
+		path: '/tab',
+		component: Layout,
+		children: [{ path: 'index', component: () => import('@/views/tab/index'), name: 'tab', meta: { title: 'tab', icon: 'tab'}}]
+	},
+
+	{
 		path: '*',
 		redirect: '/404',
 		hidden: true
 	}
+
 ]
 
 export default new Router({

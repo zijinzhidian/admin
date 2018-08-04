@@ -36,8 +36,8 @@
         		<el-dropdown-item>{{$t('navbar.github')}}</el-dropdown-item>
         	</a>
         	<!-- 退出登录 -->
-        	<el-dropdown-item>
-        		<span @click="logout">{{$t('navbar.logOut')}}</span>
+        	<el-dropdown-item divided>
+        		<span @click="logout" style="display: block;">{{$t('navbar.logOut')}}</span>
         	</el-dropdown-item>
         </el-dropdown-menu>
 			</el-dropdown>

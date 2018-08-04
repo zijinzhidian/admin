@@ -60,12 +60,27 @@
 	npm install driver.js
 */
 
+/*安装normalize.css(用于在默认的HTML元素样式上提供了跨浏览器的高度一致性)
+	npm install --save normalize.css
+*/
+
+/*安装NProgress(网页加载进度条)
+	npm install nprogress --save
+*/
+
+/*安装clipboard(用于复制粘贴到剪切板)
+	npm install clipboard --save
+*/
+
 import Vue from 'vue'        	//完整写法:import Vue from '../node_modules/vue/dist/vue.js'
 import App from './App'		 		//完整写法:import App from './App.vue'
 import router from './router'   //导入的是router文件夹下的index.js文件
 
 //全局样式
 import '@/styles/index.scss'
+
+//格式化样式
+import 'normalize.css'
 
 //Element
 import ElementUI from 'element-ui'
@@ -113,6 +128,5 @@ new Vue({
 })
 
 
-// TagsView的滚动
 // 登录的authredirect界面
 

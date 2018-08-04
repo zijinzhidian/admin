@@ -24,15 +24,6 @@
 			guide() {
 				this.driver.defineSteps(steps)
 				this.driver.start()
-			},
-			parent() {
-				console.log('parent')
-			},
-			child() {
-				console.log('child')
-			},
-			grandson() {
-				console.log('grandson')
 			}
 		},
 		mounted() {
