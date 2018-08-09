@@ -74,6 +74,16 @@ a:hover {
 	}
 }
 
+// filter-container全局样式
+.filter-container {
+	padding-bottom: 10px;
+	.filter-item {
+		display: inline-block;
+		vertical-align: middle;
+		margin-bottom: 10px;
+	}
+}
+
 // code代码块
 code {
 	display: block;

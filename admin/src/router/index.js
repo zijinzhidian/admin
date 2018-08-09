@@ -136,6 +136,21 @@ export const asyncRouterMap = [
 	},
 
 	{
+		path: '/table',
+		component: Layout,
+		redirect: '/table/complex-table',
+		meta: {
+			title: 'table',
+			icon: 'table'
+		},
+		children: [
+			{ path: 'dynamic-table', component: () => import('@/views/table/dynamicTable/index'), name:'dynamicTable', meta: { title: 'dynamicTable' }},
+			{ path: 'drag-table', component: () => import('@/views/table/dragTable'), name: 'dragTable', meta: {title: 'dragTable'}},
+			{ path: 'inline-edit-table', component: () => import('@/views/table/inlineEditTable'), name: 'inlineEditTable', meta: {title: 'inlineEditTable'}},
+		]
+	},
+
+	{
 		path: '*',
 		redirect: '/404',
 		hidden: true

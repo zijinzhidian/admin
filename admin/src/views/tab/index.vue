@@ -5,7 +5,7 @@
 		<el-tabs type="border-card" style="margin-top: 15px;" v-model="activeName">
 			<el-tab-pane v-for="item in tabMapOptions" :key="item.key" :label="item.label" :name="item.key">
 				<keep-alive>
-					<tab-pane></tab-pane>
+					<tab-pane v-if="activeName==item.key" :type="item.key" @create="showCreatedTimes"></tab-pane>
 				</keep-alive>
 			</el-tab-pane>
 		</el-tabs>
@@ -27,6 +27,11 @@
 					{ label:'Japan', key: 'JP' },
 					{ label: 'Eurozone', key: 'EU'}
 				]
+			}
+		},
+		methods: {
+			showCreatedTimes() {
+				this.createTimes = this.createTimes + 1
 			}
 		}
 	}

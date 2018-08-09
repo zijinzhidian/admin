@@ -59,6 +59,11 @@ export function debounce(func, wait, immediate) {
 }
 
 
+/**
+ * 日期时间格式化
+ * @param  {Number or Object} time    时间戳或Date对象
+ * @param  {String} cFormat 格式化
+ */
 export function parseTime(time, cFormat) {
 	if (arguments.length === 0) return null			//如果参数个数为0,返回空
 
@@ -86,8 +91,13 @@ export function parseTime(time, cFormat) {
     a: date.getDay()				//星期
 	}
 
-	const time_tr = format.replace(/{(y)}/g, (result, key) => {
-		console.log(result)
-		console.log(key)
+	const time_tr = format.replace(/{(y|m|d|h|i|s|a)}/g, (result, key) => {
+		let value = formatObj[key]
+		if (key === 'a') return ['一', '二', '三', '四', '五', '六', '日'][value - 1]
+		if (result.length > 0 && value < 10) {
+			value = '0' + value
+		}
+		return value || 0
 	})
+	return time_tr
 }

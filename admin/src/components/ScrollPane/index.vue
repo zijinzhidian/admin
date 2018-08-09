@@ -40,8 +40,7 @@
 				const $containerWidth = $container.offsetWidth
 				const $targetLeft = $target.offsetLeft					//该元素距离父元素的左边距离
 				const $targetWidth = $target.offsetWidth				//该元素的宽度
-				console.log($targetLeft)
-				console.log(-this.left)
+
 	      if ($targetLeft < -this.left) {  //若偏移量大于左边距,说明该元素已经超出左边界
 	        this.left = -$targetLeft + padding
 	      } else if ($targetLeft + padding > -this.left && $targetLeft + $targetWidth < -this.left + $containerWidth - padding) {	 //该元素在中间

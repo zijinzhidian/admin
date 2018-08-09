@@ -1,7 +1,7 @@
 <template>
-	<el-table :data="list">
+	<el-table :data="list" border fit highlight-current-row>
 		
-		<el-table-column label="ID" width="65" align="center" v-loading="loading">
+		<el-table-column label="ID" width="65" align="center" v-loading="loading" element-loading-text="请给我点时间！">
 			<template slot-scope="scope">
 				<span>{{ scope.row.id }}</span>
 			</template>
@@ -13,7 +13,7 @@
 			</template>
 		</el-table-column>
 
-		<el-table-column label="Title" min-width="300px" align="center">
+		<el-table-column label="Title" min-width="300px" align="left">
 			<template slot-scope="scope">
 				<span>{{ scope.row.title }}</span>
 				<el-tag>{{ scope.row.type }}</el-tag>
@@ -28,7 +28,7 @@
 
 		<el-table-column label="Importance" width="120px" align="center">
 			<template slot-scope="scope">
-				<span>{{ scope.row.importance }}</span>
+				<svg-icon v-for="n in scope.row.importance" icon-class="star" :key="n"></svg-icon>
 			</template>
 		</el-table-column>
 
@@ -40,7 +40,7 @@
 
 		<el-table-column label="Status" width="180px" align="center">
 			<template slot-scope="scope">
-				<span>{{ scope.row.status }}</span>
+				<el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
 			</template>
 		</el-table-column>
 
@@ -69,17 +69,27 @@
 				loading: false
 			}
 		},
+		filters: {
+			statusFilter(status) {
+				const statusMap = {
+					published: 'success',
+					draft: 'info',
+					deleted: 'danegr'
+				}
+				return statusMap[status]
+			}
+		},
 		methods: {
 			getList() {
 				this.loading = true
 				fetchList(this.listQuery).then(response => {
 					this.list = response.data.items
-
 					this.loading = false
 				})
 			}
 		},
 		created() {
+			this.$emit('create')
 			this.getList()
 		}
 	}
