@@ -23,6 +23,7 @@
     "normalize.css": "^8.0.0",
     "nprogress": "^0.2.0",
     "screenfull": "^3.3.2",
+    "sortablejs": "^1.7.0",
     "svg-sprite-loader": "^3.8.0",
     "vue": "^2.5.2",
     "vue-countup-v2": "^1.0.3",
