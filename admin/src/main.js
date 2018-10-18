@@ -3,6 +3,10 @@
 	npm install vue-i18n --save
 */
 
+/*安装element
+	npm i element-ui -S
+*/
+
 /*
 安装vuex
 	npm install vuex --save
