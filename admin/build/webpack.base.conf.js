@@ -1,10 +1,10 @@
 'use strict'
-const path = require('path')      //NodeJS中的Path对象，用于处理目录的对象，提高开发效率
-const utils = require('./utils')
-const config = require('../config')
-const vueLoaderConfig = require('./vue-loader.conf')
+const path = require('path')        //NodeJS中的Path对象，用于处理目录的对象，提高开发效率
+const utils = require('./utils')    //给整个CLI提供方法
+const config = require('../config') //开发环境的配置
+const vueLoaderConfig = require('./vue-loader.conf')  //分析是否为生产环境，然后根据不同的环境来加载配置功能
 
-function resolve (dir) {
+function resolve (dir) {          //合并path路径
   return path.join(__dirname, '..', dir)
 }
 
@@ -21,10 +21,10 @@ const createLintingRule = () => ({   //eslint代码规范验证
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
-    app: './src/main.js'        //文件入口地址
+  entry: {                  //编译入口文件
+    app: './src/main.js'        
   },
-  output: {
+  output: {                 //编译输出路径
     path: config.build.assetsRoot,
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'

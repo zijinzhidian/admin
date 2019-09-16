@@ -4,6 +4,12 @@ const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
 
+/* 4个方法：
+  assetsPath---返回不同环境下的static目录位置
+  cssLoaders---为不同的css预处理器提供一个统一的生成方式
+  styleLoaders---为那些独立的style文件创建加载器配置
+  createNotifierCallback---以类似浏览器的通知的形式展示信息
+*/
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory
